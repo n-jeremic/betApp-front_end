@@ -1,0 +1,1394 @@
+[{
+  "get": "fixtures",
+  "parameters": {
+      "league": "61",
+      "from": "2020-09-11",
+      "to": "2020-09-14",
+      "season": "2020"
+  },
+  "errors": [],
+  "results": 10,
+  "paging": {
+      "current": 1,
+      "total": 1
+  },
+  "response": [
+      {
+          "fixture": {
+              "id": 571492,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-13T13:00:00+00:00",
+              "timestamp": 1600002000,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 645,
+                  "name": "Stade Gaston-Gérard",
+                  "city": "Dijon"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 89,
+                  "name": "Dijon",
+                  "logo": "https://media.api-sports.io/football/teams/89.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 106,
+                  "name": "Stade Brestois 29",
+                  "logo": "https://media.api-sports.io/football/teams/106.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571493,
+              "referee": "R. Buquet",
+              "timezone": "UTC",
+              "date": "2020-09-11T19:00:00+00:00",
+              "timestamp": 1599850800,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 638,
+                  "name": "Stade Matmut-Atlantique",
+                  "city": "Bordeaux"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 78,
+                  "name": "Bordeaux",
+                  "logo": "https://media.api-sports.io/football/teams/78.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 80,
+                  "name": "Lyon",
+                  "logo": "https://media.api-sports.io/football/teams/80.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571494,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-13T13:00:00+00:00",
+              "timestamp": 1600002000,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 634,
+                  "name": "Stade Raymond-Kopa",
+                  "city": "Angers"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 77,
+                  "name": "Angers",
+                  "logo": "https://media.api-sports.io/football/teams/77.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 93,
+                  "name": "Reims",
+                  "logo": "https://media.api-sports.io/football/teams/93.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571495,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-13T11:00:00+00:00",
+              "timestamp": 1599994800,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 655,
+                  "name": "Stade Pierre-Mauroy",
+                  "city": "Villeneuve d'Ascq"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 79,
+                  "name": "Lille",
+                  "logo": "https://media.api-sports.io/football/teams/79.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 112,
+                  "name": "Metz",
+                  "logo": "https://media.api-sports.io/football/teams/112.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571496,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-13T13:00:00+00:00",
+              "timestamp": 1600002000,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 656,
+                  "name": "Stade Yves Allainmat - Le Moustoir",
+                  "city": "Lorient"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 97,
+                  "name": "Lorient",
+                  "logo": "https://media.api-sports.io/football/teams/97.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 116,
+                  "name": "Lens",
+                  "logo": "https://media.api-sports.io/football/teams/116.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571497,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-13T13:00:00+00:00",
+              "timestamp": 1600002000,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 664,
+                  "name": "Stade des Costières",
+                  "city": "Nîmes"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 92,
+                  "name": "Nimes",
+                  "logo": "https://media.api-sports.io/football/teams/92.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 94,
+                  "name": "Rennes",
+                  "logo": "https://media.api-sports.io/football/teams/94.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571498,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-12T19:00:00+00:00",
+              "timestamp": 1599937200,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 676,
+                  "name": "Stade Geoffroy-Guichard",
+                  "city": "Saint-Ètienne"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 1063,
+                  "name": "Saint Etienne",
+                  "logo": "https://media.api-sports.io/football/teams/1063.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 95,
+                  "name": "Strasbourg",
+                  "logo": "https://media.api-sports.io/football/teams/95.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571499,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-12T15:00:00+00:00",
+              "timestamp": 1599922800,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 660,
+                  "name": "Stade de la Mosson",
+                  "city": "Montpellier"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 82,
+                  "name": "Montpellier",
+                  "logo": "https://media.api-sports.io/football/teams/82.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 84,
+                  "name": "Nice",
+                  "logo": "https://media.api-sports.io/football/teams/84.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571500,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-13T15:00:00+00:00",
+              "timestamp": 1600009200,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 659,
+                  "name": "Stade Louis II",
+                  "city": "Monaco"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 91,
+                  "name": "Monaco",
+                  "logo": "https://media.api-sports.io/football/teams/91.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 83,
+                  "name": "Nantes",
+                  "logo": "https://media.api-sports.io/football/teams/83.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      },
+      {
+          "fixture": {
+              "id": 571501,
+              "referee": null,
+              "timezone": "UTC",
+              "date": "2020-09-13T19:00:00+00:00",
+              "timestamp": 1600023600,
+              "periods": {
+                  "first": null,
+                  "second": null
+              },
+              "venue": {
+                  "id": 671,
+                  "name": "Parc des Princes",
+                  "city": "Paris"
+              },
+              "status": {
+                  "long": "Not Started",
+                  "short": "NS",
+                  "elapsed": null
+              }
+          },
+          "league": {
+              "id": 61,
+              "name": "Ligue 1",
+              "country": "France",
+              "logo": "https://media.api-sports.io/football/leagues/61.png",
+              "flag": "https://media.api-sports.io/flags/fr.svg",
+              "season": 2020,
+              "round": "Regular Season - 3"
+          },
+          "teams": {
+              "home": {
+                  "id": 85,
+                  "name": "Paris Saint Germain",
+                  "logo": "https://media.api-sports.io/football/teams/85.png",
+                  "winner": null
+              },
+              "away": {
+                  "id": 81,
+                  "name": "Marseille",
+                  "logo": "https://media.api-sports.io/football/teams/81.png",
+                  "winner": null
+              }
+          },
+          "goals": {
+              "home": null,
+              "away": null
+          },
+          "score": {
+              "halftime": {
+                  "home": null,
+                  "away": null
+              },
+              "fulltime": {
+                  "home": null,
+                  "away": null
+              },
+              "extratime": {
+                  "home": null,
+                  "away": null
+              },
+              "penalty": {
+                  "home": null,
+                  "away": null
+              }
+          }
+      }
+  ]
+},
+{
+    "get": "fixtures",
+    "parameters": {
+        "from": "2020-09-11",
+        "to": "2020-09-14",
+        "season": "2020",
+        "league": "39"
+    },
+    "errors": [],
+    "results": 10,
+    "paging": {
+        "current": 1,
+        "total": 1
+    },
+    "response": [
+        {
+            "fixture": {
+                "id": 592141,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-12T14:00:00+00:00",
+                "timestamp": 1599919200,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 512,
+                    "name": "Turf Moor",
+                    "city": "Burnley"
+                },
+                "status": {
+                    "long": "Match Postponed",
+                    "short": "PST",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 44,
+                    "name": "Burnley",
+                    "logo": "https://media.api-sports.io/football/teams/44.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 33,
+                    "name": "Manchester United",
+                    "logo": "https://media.api-sports.io/football/teams/33.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592142,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-12T14:00:00+00:00",
+                "timestamp": 1599919200,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 525,
+                    "name": "Selhurst Park",
+                    "city": "London"
+                },
+                "status": {
+                    "long": "Not Started",
+                    "short": "NS",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 52,
+                    "name": "Crystal Palace",
+                    "logo": "https://media.api-sports.io/football/teams/52.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 41,
+                    "name": "Southampton",
+                    "logo": "https://media.api-sports.io/football/teams/41.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592143,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-12T11:30:00+00:00",
+                "timestamp": 1599910200,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 535,
+                    "name": "Craven Cottage",
+                    "city": "London"
+                },
+                "status": {
+                    "long": "Not Started",
+                    "short": "NS",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 36,
+                    "name": "Fulham",
+                    "logo": "https://media.api-sports.io/football/teams/36.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 42,
+                    "name": "Arsenal",
+                    "logo": "https://media.api-sports.io/football/teams/42.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592144,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-12T16:30:00+00:00",
+                "timestamp": 1599928200,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 550,
+                    "name": "Anfield",
+                    "city": "Liverpool"
+                },
+                "status": {
+                    "long": "Not Started",
+                    "short": "NS",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 40,
+                    "name": "Liverpool",
+                    "logo": "https://media.api-sports.io/football/teams/40.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 63,
+                    "name": "Leeds",
+                    "logo": "https://media.api-sports.io/football/teams/63.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592145,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-12T14:00:00+00:00",
+                "timestamp": 1599919200,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 555,
+                    "name": "Etihad Stadium",
+                    "city": "Manchester"
+                },
+                "status": {
+                    "long": "Match Postponed",
+                    "short": "PST",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 50,
+                    "name": "Manchester City",
+                    "logo": "https://media.api-sports.io/football/teams/50.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 66,
+                    "name": "Aston Villa",
+                    "logo": "https://media.api-sports.io/football/teams/66.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592146,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-13T15:30:00+00:00",
+                "timestamp": 1600011000,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 593,
+                    "name": "Tottenham Hotspur Stadium",
+                    "city": "London"
+                },
+                "status": {
+                    "long": "Not Started",
+                    "short": "NS",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 47,
+                    "name": "Tottenham",
+                    "logo": "https://media.api-sports.io/football/teams/47.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 45,
+                    "name": "Everton",
+                    "logo": "https://media.api-sports.io/football/teams/45.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592147,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-13T13:00:00+00:00",
+                "timestamp": 1600002000,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 597,
+                    "name": "The Hawthorns",
+                    "city": "West Bromwich"
+                },
+                "status": {
+                    "long": "Not Started",
+                    "short": "NS",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 60,
+                    "name": "West Brom",
+                    "logo": "https://media.api-sports.io/football/teams/60.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 46,
+                    "name": "Leicester",
+                    "logo": "https://media.api-sports.io/football/teams/46.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592148,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-12T19:00:00+00:00",
+                "timestamp": 1599937200,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 598,
+                    "name": "London Stadium",
+                    "city": "London"
+                },
+                "status": {
+                    "long": "Not Started",
+                    "short": "NS",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 48,
+                    "name": "West Ham",
+                    "logo": "https://media.api-sports.io/football/teams/48.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 34,
+                    "name": "Newcastle",
+                    "logo": "https://media.api-sports.io/football/teams/34.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592149,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-14T19:15:00+00:00",
+                "timestamp": 1600110900,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 508,
+                    "name": "The American Express Community Stadium",
+                    "city": "Falmer, East Sussex"
+                },
+                "status": {
+                    "long": "Not Started",
+                    "short": "NS",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 51,
+                    "name": "Brighton",
+                    "logo": "https://media.api-sports.io/football/teams/51.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 49,
+                    "name": "Chelsea",
+                    "logo": "https://media.api-sports.io/football/teams/49.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        },
+        {
+            "fixture": {
+                "id": 592150,
+                "referee": null,
+                "timezone": "UTC",
+                "date": "2020-09-14T17:00:00+00:00",
+                "timestamp": 1600102800,
+                "periods": {
+                    "first": null,
+                    "second": null
+                },
+                "venue": {
+                    "id": 581,
+                    "name": "Bramall Lane",
+                    "city": "Sheffield"
+                },
+                "status": {
+                    "long": "Not Started",
+                    "short": "NS",
+                    "elapsed": null
+                }
+            },
+            "league": {
+                "id": 39,
+                "name": "Premier League",
+                "country": "England",
+                "logo": "https://media.api-sports.io/football/leagues/39.png",
+                "flag": "https://media.api-sports.io/flags/gb.svg",
+                "season": 2020,
+                "round": "Regular Season - 1"
+            },
+            "teams": {
+                "home": {
+                    "id": 62,
+                    "name": "Sheffield Utd",
+                    "logo": "https://media.api-sports.io/football/teams/62.png",
+                    "winner": null
+                },
+                "away": {
+                    "id": 39,
+                    "name": "Wolves",
+                    "logo": "https://media.api-sports.io/football/teams/39.png",
+                    "winner": null
+                }
+            },
+            "goals": {
+                "home": null,
+                "away": null
+            },
+            "score": {
+                "halftime": {
+                    "home": null,
+                    "away": null
+                },
+                "fulltime": {
+                    "home": null,
+                    "away": null
+                },
+                "extratime": {
+                    "home": null,
+                    "away": null
+                },
+                "penalty": {
+                    "home": null,
+                    "away": null
+                }
+            }
+        }
+    ]
+}]
