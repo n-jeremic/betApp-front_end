@@ -3,22 +3,23 @@
     <b-container fluid>
       <b-row>
         <b-col cols="10">
-          <app-fixtures-page/>
+          <router-view/>
         </b-col>
         <b-col cols="2">
           <b-button variant="primary" size="lg" block>Nav placeholder</b-button>
         </b-col>
       </b-row>
     </b-container>
+    <app-modal-controller/>
   </div>
 </template>
 
 <script>
-import FixturesPage from './components/fixtures/FixturesPage.vue'
+import ModalController from './components/fixtureInfoModal/Modal.vue'
 
 export default {
   components: {
-    appFixturesPage: FixturesPage
+    appModalController: ModalController
   }
 }
 </script>
@@ -41,12 +42,13 @@ export default {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #999999;
+  background: #b3b3b3;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
+  background: #737373;
+  cursor: pointer;
 }
 </style>

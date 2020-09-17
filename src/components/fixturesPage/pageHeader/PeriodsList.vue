@@ -55,7 +55,7 @@ export default {
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #80bdff;
+  background-color: #3396ff;
   border-color: #007bff;
 }
 </style>

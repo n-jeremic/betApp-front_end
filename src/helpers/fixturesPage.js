@@ -36,13 +36,25 @@ export const generateDateString = dateObject => {
   return `${year}-${month}-${day}`
 }
 
-export const filterResolvedPromises = responsesArray => {
+export const sortFixturesByDate = filteredResponses => {
+  filteredResponses.forEach(fixturesPerLeague => {
+    fixturesPerLeague.sort((a, b) => {
+      const dateA = new Date(a.fixture.date)
+      const dateB = new Date(b.fixture.date)
+      return dateA - dateB
+    })
+  })
+
+  return filteredResponses
+}
+
+export const filterMockedResponses = responsesArray => {
   const map = []
-  responsesArray.forEach(axiosObject => {
-    const errors = axiosObject.data.errors
+  responsesArray.forEach(response => {
+    const errors = response.errors
     if (Array.isArray(errors) && errors.length === 0) {
-      if (axiosObject.data.response.length) {
-        map.push(axiosObject.data.response)
+      if (response.response.length) {
+        map.push(response.response)
       }
     } else {
       throw new Error()
