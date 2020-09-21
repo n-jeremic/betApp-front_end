@@ -25,13 +25,17 @@ export default {
 </script>
 
 <style>
+:root {
+  --title-color: #4f5963
+}
+
 #app {
   margin: 1rem 0;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
 }
 
 /* Track */

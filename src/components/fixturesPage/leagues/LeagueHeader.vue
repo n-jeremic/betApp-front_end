@@ -56,6 +56,6 @@ h4 {
 
 .league-header {
   cursor: pointer;
-  color: #4f5963;
+  color: var(--title-color);
 }
 </style>

@@ -1,12 +1,17 @@
 <template>
-  <b-card class="full-height">
-    <template v-slot:header>
-      <h5>test card</h5>
-    </template>
+  <b-card no-body class="full-height" border-variant="secondary">
+    <app-card-header :fixture="fixtureBasicInfo" />
+    <b-card-body class="card-body-padding full-height">
+      <app-teams-output :teams="fixtureBasicInfo.teams" />
+      <app-tabs v-if="responseData" :tabsData="responseData" />
+    </b-card-body>
   </b-card>
 </template>
 
 <script>
+import CardHeader from './CardHeader.vue'
+import Tabs from './Tabs.vue'
+import TeamsOutput from './TeamsOutput.vue'
 import {
   fetchLastGames,
   fetchOdds,
@@ -16,21 +21,17 @@ import {
 } from '../../../helpers/api'
 
 export default {
+  components: {
+    appCardHeader: CardHeader,
+    appTeamsOutput: TeamsOutput,
+    appTabs: Tabs
+  },
   props: {
     fixtureBasicInfo: Object
   },
   data () {
     return {
-      fixtureOdds: null,
-      previousFixtures: {
-        homeTeam: null,
-        awayTeam: null
-      },
-      players: {
-        homeTeam: null,
-        awayTeam: null
-      },
-      leagueStandings: null
+      responseData: null
     }
   },
   methods: {
@@ -55,12 +56,22 @@ export default {
       }
     },
     assignResponseData (responses) {
-      this.previousFixtures.homeTeam = responses[0]
-      this.previousFixtures.awayTeam = responses[1]
-      this.players.homeTeam = responses[2]
-      this.players.awayTeam = responses[3]
-      this.fixtureOdds = responses[4][0].bookmakers[0].bets
-      this.leagueStandings = responses[5][0].league
+      this.responseData = {}
+      this.responseData.previousGames = {}
+      this.responseData.previousGames.homeTeam = {}
+      this.responseData.previousGames.homeTeam.id = this.fixtureBasicInfo.teams.home.id
+      this.responseData.previousGames.homeTeam.name = this.fixtureBasicInfo.teams.home.name
+      this.responseData.previousGames.awayTeam = {}
+      this.responseData.previousGames.awayTeam.id = this.fixtureBasicInfo.teams.away.id
+      this.responseData.previousGames.awayTeam.name = this.fixtureBasicInfo.teams.away.name
+      this.responseData.players = {}
+
+      this.responseData.previousGames.homeTeam.fixtures = responses[0]
+      this.responseData.previousGames.awayTeam.fixtures = responses[1]
+      this.responseData.players.homeTeam = responses[2]
+      this.responseData.players.awayTeam = responses[3]
+      this.responseData.odds = responses[4][0].bookmakers[0].bets
+      this.responseData.standings = responses[5][0].league
     },
     saveResponseInLocalStorage (responses) {
       const ls = localStorage.getItem('availableFixtures')
@@ -97,5 +108,9 @@ export default {
 <style scoped>
 .full-height {
   height: 100%;
+}
+
+.card-body-padding {
+  padding: 1rem;
 }
 </style>
