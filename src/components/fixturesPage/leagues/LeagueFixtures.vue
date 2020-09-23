@@ -2,7 +2,7 @@
   <b-card
     no-body
     class="container-margin shadow-sm"
-    :border-variant="`${ headerHovered && !isListOpen ? 'primary' : '' }`"
+    :border-variant="`${ headerHovered && !isListOpen ? 'secondary' : '' }`"
   >
     <app-league-header
       :leagueInfo="leagueInfo"
@@ -55,7 +55,6 @@ export default {
 
 .container-margin {
   margin-bottom: 2rem;
-  margin-right: 0.2rem;
 }
 
 .container-margin:last-child {

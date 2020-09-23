@@ -4,6 +4,7 @@
     <b-card-body class="card-body-padding full-height">
       <app-teams-output :teams="fixtureBasicInfo.teams" />
       <app-tabs v-if="responseData" :tabsData="responseData" />
+      <app-loader v-if="loadingData" :marginTop="'6rem'" :spinnerType="'grow'" />
     </b-card-body>
   </b-card>
 </template>
@@ -12,8 +13,9 @@
 import CardHeader from './CardHeader.vue'
 import Tabs from './Tabs.vue'
 import TeamsOutput from './TeamsOutput.vue'
+import Loader from '../../shared/Loader.vue'
 import {
-  fetchLastGames,
+  fetchGames,
   fetchOdds,
   fetchPlayers,
   fetchStandings,
@@ -24,14 +26,16 @@ export default {
   components: {
     appCardHeader: CardHeader,
     appTeamsOutput: TeamsOutput,
-    appTabs: Tabs
+    appTabs: Tabs,
+    appLoader: Loader
   },
   props: {
     fixtureBasicInfo: Object
   },
   data () {
     return {
-      responseData: null
+      responseData: null,
+      loadingData: false
     }
   },
   methods: {
@@ -40,8 +44,10 @@ export default {
         const homeTeam = this.fixtureBasicInfo.teams.home
         const awayTeam = this.fixtureBasicInfo.teams.away
         const responses = await Promise.all([
-          fetchLastGames(homeTeam.id, 10),
-          fetchLastGames(awayTeam.id, 10),
+          fetchGames(homeTeam.id, 'last', 10),
+          fetchGames(awayTeam.id, 'last', 10),
+          fetchGames(homeTeam.id, 'next', 10),
+          fetchGames(awayTeam.id, 'next', 10),
           fetchPlayers(homeTeam.id),
           fetchPlayers(awayTeam.id),
           fetchOdds(this.fixtureBasicInfo.fixture.id),
@@ -57,21 +63,27 @@ export default {
     },
     assignResponseData (responses) {
       this.responseData = {}
-      this.responseData.previousGames = {}
-      this.responseData.previousGames.homeTeam = {}
-      this.responseData.previousGames.homeTeam.id = this.fixtureBasicInfo.teams.home.id
-      this.responseData.previousGames.homeTeam.name = this.fixtureBasicInfo.teams.home.name
-      this.responseData.previousGames.awayTeam = {}
-      this.responseData.previousGames.awayTeam.id = this.fixtureBasicInfo.teams.away.id
-      this.responseData.previousGames.awayTeam.name = this.fixtureBasicInfo.teams.away.name
-      this.responseData.players = {}
+      this.assignGamesToResponseData('previousGames', { homeTeam: responses[0], awayTeam: responses[1] })
+      this.assignGamesToResponseData('nextGames', { homeTeam: responses[2], awayTeam: responses[3] })
 
-      this.responseData.previousGames.homeTeam.fixtures = responses[0]
-      this.responseData.previousGames.awayTeam.fixtures = responses[1]
-      this.responseData.players.homeTeam = responses[2]
-      this.responseData.players.awayTeam = responses[3]
-      this.responseData.odds = responses[4][0].bookmakers[0].bets
-      this.responseData.standings = responses[5][0].league
+      this.responseData.players = {}
+      this.responseData.players.homeTeam = responses[4]
+      this.responseData.players.awayTeam = responses[5]
+      this.responseData.odds = responses[6][0].bookmakers[0].bets
+      this.responseData.standings = responses[7][0].league
+      this.responseData.standings.teamIds = [this.fixtureBasicInfo.teams.home.id, this.fixtureBasicInfo.teams.away.id]
+    },
+    assignGamesToResponseData (type, responseObj) {
+      this.responseData[type] = {}
+      this.responseData[type].currentFixtureId = this.fixtureBasicInfo.fixture.id
+      this.responseData[type].homeTeam = {}
+      this.responseData[type].homeTeam.id = this.fixtureBasicInfo.teams.home.id
+      this.responseData[type].homeTeam.name = this.fixtureBasicInfo.teams.home.name
+      this.responseData[type].awayTeam = {}
+      this.responseData[type].awayTeam.id = this.fixtureBasicInfo.teams.away.id
+      this.responseData[type].awayTeam.name = this.fixtureBasicInfo.teams.away.name
+      this.responseData[type].homeTeam.fixtures = responseObj.homeTeam
+      this.responseData[type].awayTeam.fixtures = responseObj.awayTeam
     },
     saveResponseInLocalStorage (responses) {
       const ls = localStorage.getItem('availableFixtures')
@@ -99,8 +111,13 @@ export default {
     }
   },
   async created () {
-    if (!this.checkFixtureInLocalStorage()) await this.getAllData()
-    else this.assignResponseData(this.getFixtureFromLocalStorage())
+    if (!this.checkFixtureInLocalStorage()) {
+      this.loadingData = true
+      await this.getAllData()
+      this.loadingData = false
+    } else {
+      this.assignResponseData(this.getFixtureFromLocalStorage())
+    }
   }
 }
 </script>
@@ -111,6 +128,6 @@ export default {
 }
 
 .card-body-padding {
-  padding: 1rem;
+  padding: 1rem 0.5rem;
 }
 </style>

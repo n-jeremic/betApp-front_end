@@ -1,16 +1,14 @@
 <template>
-  <div class="table-container shadow-sm">
-    <b-table-simple small hover>
-      <b-tbody>
-        <app-games-table-row
-          v-for="game in filteredFixtures"
-          :key="game.id"
-          :teamId="team.id"
-          :fixture="game"
-         />
-      </b-tbody>
-    </b-table-simple>
-  </div>
+  <b-table-simple class="shadow-sm" small hover outlined>
+    <b-tbody>
+      <app-games-table-row
+        v-for="game in filteredFixtures"
+        :key="game.id"
+        :teamId="team.id"
+        :fixture="game"
+        />
+    </b-tbody>
+  </b-table-simple>
 </template>
 
 <script>
@@ -40,11 +38,6 @@ export default {
 </script>
 
 <style scoped>
-.table-container {
-  border: 1px solid #dee2e6;
-  border-top: 0;
-}
-
 .table {
   margin-bottom: 0 !important;
 }

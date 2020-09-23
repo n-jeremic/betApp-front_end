@@ -4,10 +4,10 @@
     <b-icon class="close-icon" variant="danger" icon="x-circle-fill" font-scale="2" @click="closeModal"/>
     <b-container fluid>
       <b-row>
-        <b-col cols="4">
+        <b-col cols="5">
           <app-fixture-card :fixtureBasicInfo="selectedFixture"/>
         </b-col>
-        <b-col cols="8"></b-col>
+        <b-col cols="7"></b-col>
       </b-row>
     </b-container>
   </div>

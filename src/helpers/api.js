@@ -6,9 +6,9 @@ export const fetchLeagueFixtures = (leagueId, from, to) => {
   })
 }
 
-export const fetchLastGames = (teamId, numOfGames) => {
+export const fetchGames = (teamId, type, numOfGames) => {
   return soccerApiAxios({
-    url: `/fixtures?team=${teamId}&last=${numOfGames}`
+    url: `/fixtures?team=${teamId}&${type}=${numOfGames}`
   })
 }
 

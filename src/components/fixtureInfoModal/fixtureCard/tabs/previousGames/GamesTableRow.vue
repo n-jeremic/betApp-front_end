@@ -4,7 +4,10 @@
       {{ fixtureDate }}
     </b-td>
     <b-td>
-      <img :src="this.fixture.league.flag ? this.fixture.league.flag : this.fixture.league.logo" :alt="`${this.fixture.league.name}-flag`">
+      <img
+        :src="this.fixture.league.flag ? this.fixture.league.flag : this.fixture.league.logo"
+        :alt="`${this.fixture.league.name}-flag`"
+      >
       <span>{{ league }}</span>
     </b-td>
     <b-td>

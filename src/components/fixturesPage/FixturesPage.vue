@@ -37,7 +37,7 @@
       v-if="errorMessage"
       :errorMessage="errorMessage"
     />
-    <app-loader v-if="loadingData" />
+    <app-loader v-if="loadingData" :marginTop="'3rem'" :spinnerType="'grow'" />
   </div>
 </template>
 
@@ -153,5 +153,16 @@ export default {
   margin-top: 2rem;
   max-height: 85vh;
   overflow-y: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.fixtures-output::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.fixtures-output {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 </style>

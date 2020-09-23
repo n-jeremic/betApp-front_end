@@ -5,7 +5,7 @@
         <img :src="teams.home.logo" :alt="`${teams.home.name}-logo`">
       </div>
       <div class="text-center team-name">
-        {{ teams.home.name }}
+        {{ teams.home.name | formatTeamName }}
       </div>
     </b-col>
     <b-col cols="2" class="text-center">
@@ -16,7 +16,7 @@
         <img :src="teams.away.logo" :alt="`${teams.away.name}-logo`">
       </div>
       <div class="text-center team-name">
-        {{ teams.away.name }}
+        {{ teams.away.name | formatTeamName }}
       </div>
     </b-col>
   </b-row>
@@ -26,6 +26,20 @@
 export default {
   props: {
     teams: Object
+  },
+  filters: {
+    formatTeamName (teamName) {
+      const teamNameArr = teamName.split(' ')
+      if (teamNameArr.length > 2) {
+        let formatedName = ''
+        teamNameArr.forEach(word => {
+          formatedName += word[0]
+        })
+        return formatedName
+      }
+
+      return teamName
+    }
   }
 }
 </script>

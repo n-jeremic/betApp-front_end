@@ -1,16 +1,18 @@
 <template>
-  <div>
+  <div :style="{'margin-top': marginTop, 'text-align': 'center'}">
     <b-spinner
       variant="primary"
       style="width: 3rem; height: 3rem"
-      type="grow"
+      :type="spinnerType"
     />
   </div>
 </template>
 
-<style scoped>
-div {
-  margin-top: 3rem;
-  text-align: center;
+<script>
+export default {
+  props: {
+    marginTop: String,
+    spinnerType: String
+  }
 }
-</style>
+</script>
