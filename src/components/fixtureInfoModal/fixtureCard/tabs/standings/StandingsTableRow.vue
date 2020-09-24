@@ -3,7 +3,7 @@
     <b-td
       :class="['text-center','border-right', { 'pointer' : teamRankingVariant }]"
       :variant="teamRankingVariant"
-      :id="`${iterationIndex}-ranking`"
+      :id="`${iterationIndex}-tooltip-standings`"
     >{{ teamRanking }}</b-td>
     <b-td :variant="teamRankingVariant && currentTeamVariant ? 'warning' : ''">
       <img :src="tableRowData.team.logo" :alt="`${tableRowData.team.logo}-logo`">
@@ -35,7 +35,7 @@
     >{{ tableRowData.games.points }}</b-td>
     <b-tooltip
       v-if="teamRankingVariant"
-      :target="`${iterationIndex}-ranking`"
+      :target="`${iterationIndex}-tooltip-standings`"
       noninteractive
     >{{ tableRowData.description }}</b-tooltip>
   </b-tr>

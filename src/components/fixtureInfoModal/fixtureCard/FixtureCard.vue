@@ -21,6 +21,12 @@ import {
   fetchStandings,
   filterResolvedPromises
 } from '../../../helpers/api'
+import {
+  filterPlayersData,
+  saveResponseInLocalStorage,
+  checkFixtureInLocalStorage,
+  getFixtureFromLocalStorage
+} from '../../../helpers/fixtureInfoModal'
 
 export default {
   components: {
@@ -41,21 +47,23 @@ export default {
   methods: {
     async getAllData () {
       try {
-        const homeTeam = this.fixtureBasicInfo.teams.home
-        const awayTeam = this.fixtureBasicInfo.teams.away
+        const basicInfoObjRef = this.fixtureBasicInfo
+        const homeTeam = basicInfoObjRef.teams.home
+        const awayTeam = basicInfoObjRef.teams.away
         const responses = await Promise.all([
           fetchGames(homeTeam.id, 'last', 10),
           fetchGames(awayTeam.id, 'last', 10),
           fetchGames(homeTeam.id, 'next', 10),
           fetchGames(awayTeam.id, 'next', 10),
-          fetchPlayers(homeTeam.id),
-          fetchPlayers(awayTeam.id),
-          fetchOdds(this.fixtureBasicInfo.fixture.id),
-          fetchStandings(this.fixtureBasicInfo.league.id)
+          fetchPlayers(homeTeam.id, 1),
+          fetchPlayers(homeTeam.id, 2),
+          fetchPlayers(awayTeam.id, 1),
+          fetchPlayers(awayTeam.id, 2),
+          fetchOdds(basicInfoObjRef.fixture.id),
+          fetchStandings(basicInfoObjRef.league.id)
         ])
-
         const filteredResponses = filterResolvedPromises(responses)
-        this.saveResponseInLocalStorage(filteredResponses)
+        saveResponseInLocalStorage(filteredResponses, basicInfoObjRef.fixture.id)
         this.assignResponseData(filteredResponses)
       } catch (err) {
         console.log(err)
@@ -63,60 +71,63 @@ export default {
     },
     assignResponseData (responses) {
       this.responseData = {}
-      this.assignGamesToResponseData('previousGames', { homeTeam: responses[0], awayTeam: responses[1] })
-      this.assignGamesToResponseData('nextGames', { homeTeam: responses[2], awayTeam: responses[3] })
+      const responseDataObjRef = this.responseData
+      const basicInfoObjRef = this.fixtureBasicInfo
 
-      this.responseData.players = {}
-      this.responseData.players.homeTeam = responses[4]
-      this.responseData.players.awayTeam = responses[5]
-      this.responseData.odds = responses[6][0].bookmakers[0].bets
-      this.responseData.standings = responses[7][0].league
-      this.responseData.standings.teamIds = [this.fixtureBasicInfo.teams.home.id, this.fixtureBasicInfo.teams.away.id]
+      this.assignGamesToResponseData(
+        'previousGames',
+        { homeTeam: responses[0], awayTeam: responses[1] },
+        responseDataObjRef,
+        basicInfoObjRef
+      )
+      this.assignGamesToResponseData(
+        'nextGames',
+        { homeTeam: responses[2], awayTeam: responses[3] },
+        responseDataObjRef,
+        basicInfoObjRef
+      )
+      this.assignPlayersToResponseData(
+        responses[4].concat(responses[5]),
+        responses[6].concat(responses[7]),
+        responseDataObjRef,
+        basicInfoObjRef
+      )
+      this.assignStandingsToResponseData(responses[9][0].league, responseDataObjRef, basicInfoObjRef)
+      responseDataObjRef.odds = responses[8][0].bookmakers[0].bets
     },
-    assignGamesToResponseData (type, responseObj) {
-      this.responseData[type] = {}
-      this.responseData[type].currentFixtureId = this.fixtureBasicInfo.fixture.id
-      this.responseData[type].homeTeam = {}
-      this.responseData[type].homeTeam.id = this.fixtureBasicInfo.teams.home.id
-      this.responseData[type].homeTeam.name = this.fixtureBasicInfo.teams.home.name
-      this.responseData[type].awayTeam = {}
-      this.responseData[type].awayTeam.id = this.fixtureBasicInfo.teams.away.id
-      this.responseData[type].awayTeam.name = this.fixtureBasicInfo.teams.away.name
-      this.responseData[type].homeTeam.fixtures = responseObj.homeTeam
-      this.responseData[type].awayTeam.fixtures = responseObj.awayTeam
+    assignGamesToResponseData (gamesType, apiResponseObj, responseDataObjRef, basicInfoObjRef) {
+      responseDataObjRef[gamesType] = {}
+      const gamesObjRef = this.responseData[gamesType]
+
+      gamesObjRef.currentFixtureId = basicInfoObjRef.fixture.id
+      gamesObjRef.homeTeam = {}
+      gamesObjRef.homeTeam.id = basicInfoObjRef.teams.home.id
+      gamesObjRef.homeTeam.name = basicInfoObjRef.teams.home.name
+      gamesObjRef.awayTeam = {}
+      gamesObjRef.awayTeam.id = basicInfoObjRef.teams.away.id
+      gamesObjRef.awayTeam.name = basicInfoObjRef.teams.away.name
+      gamesObjRef.homeTeam.fixtures = apiResponseObj.homeTeam
+      gamesObjRef.awayTeam.fixtures = apiResponseObj.awayTeam
     },
-    saveResponseInLocalStorage (responses) {
-      const ls = localStorage.getItem('availableFixtures')
-      const fixtureId = this.fixtureBasicInfo.fixture.id
-      if (!ls) {
-        const object = {}
-        object[fixtureId] = responses
-        localStorage.setItem('availableFixtures', JSON.stringify(object))
-      } else {
-        const parsedObject = JSON.parse(ls)
-        parsedObject[fixtureId] = responses
-        localStorage.setItem('availableFixtures', JSON.stringify(parsedObject))
-      }
+    assignPlayersToResponseData (homeTeamPlayersArr, awayTeamPlayersArr, responseDataObjRef, basicInfoObjRef) {
+      responseDataObjRef.players = {}
+      responseDataObjRef.players.teams = basicInfoObjRef.teams
+      responseDataObjRef.players.homeTeam = filterPlayersData(homeTeamPlayersArr)
+      responseDataObjRef.players.awayTeam = filterPlayersData(awayTeamPlayersArr)
     },
-    checkFixtureInLocalStorage () {
-      const ls = localStorage.getItem('availableFixtures')
-      if (!ls) return false
-      const parsed = JSON.parse(ls)
-      if (parsed[this.fixtureBasicInfo.fixture.id]) return true
-      else return false
-    },
-    getFixtureFromLocalStorage () {
-      const parsed = JSON.parse(localStorage.getItem('availableFixtures'))
-      return parsed[this.fixtureBasicInfo.fixture.id]
+    assignStandingsToResponseData (standingsData, responseDataObjRef, basicInfoObjRef) {
+      responseDataObjRef.standings = standingsData
+      responseDataObjRef.standings.teamIds = [basicInfoObjRef.teams.home.id, basicInfoObjRef.teams.away.id]
     }
   },
   async created () {
-    if (!this.checkFixtureInLocalStorage()) {
+    const fixtureId = this.fixtureBasicInfo.fixture.id
+    if (!checkFixtureInLocalStorage(fixtureId)) {
       this.loadingData = true
       await this.getAllData()
       this.loadingData = false
     } else {
-      this.assignResponseData(this.getFixtureFromLocalStorage())
+      this.assignResponseData(getFixtureFromLocalStorage(fixtureId))
     }
   }
 }

@@ -23,7 +23,7 @@ export const generatePeriods = numOfPeriods => {
 export const generateDateString = dateObject => {
   const year = dateObject.getFullYear()
   let month = (dateObject.getMonth() + 1).toString()
-  let day = dateObject.getDate()
+  let day = (dateObject.getDate()).toString()
 
   if (month.length === 1) {
     month = `0${month}`

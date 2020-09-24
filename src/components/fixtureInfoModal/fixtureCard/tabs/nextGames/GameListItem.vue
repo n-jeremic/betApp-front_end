@@ -1,14 +1,18 @@
 <template>
   <b-tr>
-    <b-td>{{ fixtureDate }}</b-td>
+    <b-td class="right-border">{{ fixtureDate }}</b-td>
     <b-td>{{ fixtureOutput }}</b-td>
-    <b-td class="text-right">
+    <b-td class="text-center left-border" :id="`${this.fixtureObj.fixture.id}-tooltip-next-games`">
       <span>{{ fixtureLeague }}</span>
       <img
         :src="this.fixtureObj.league.flag ? this.fixtureObj.league.flag : this.fixtureObj.league.logo"
         :alt="`${this.fixtureObj.league.name}-flag`"
       >
     </b-td>
+    <b-tooltip
+      :target="`${this.fixtureObj.fixture.id}-tooltip-next-games`"
+      noninteractive
+    >{{ this.fixtureObj.league.name }}</b-tooltip>
   </b-tr>
 </template>
 
@@ -33,7 +37,11 @@ export default {
     fixtureOutput () {
       const isHomeTeam = this.fixtureObj.teams.home.id === this.currentTeamId
       const caption = isHomeTeam ? 'vs' : '@'
-      const oppositeTeam = isHomeTeam ? this.fixtureObj.teams.away.name : this.fixtureObj.teams.home.name
+      let oppositeTeam = isHomeTeam ? this.fixtureObj.teams.away.name : this.fixtureObj.teams.home.name
+      if (oppositeTeam.length > 18) {
+        const splitted = oppositeTeam.split(' ')
+        oppositeTeam = splitted[0] + ' ' + splitted[1].slice(0, 3)
+      }
 
       return `${caption} ${oppositeTeam}`
     }
@@ -46,5 +54,13 @@ img {
   width: 20px;
   margin-left: 0.3rem;
   margin-bottom: 0.2rem;
+}
+
+.right-border {
+  border-right: 1px solid #dee2e6;
+}
+
+.left-border {
+  border-left: 1px solid #dee2e6;
 }
 </style>

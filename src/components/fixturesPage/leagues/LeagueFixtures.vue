@@ -11,7 +11,7 @@
       @mouseover="headerHovered = true"
       @mouseout="headerHovered = false"
     />
-    <b-card-body v-if="isListOpen" class="padding">
+    <b-card-body v-show="isListOpen" class="padding">
       <b-container fluid>
         <b-row>
           <app-fixture-item

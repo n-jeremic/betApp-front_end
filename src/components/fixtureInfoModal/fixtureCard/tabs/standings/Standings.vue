@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-nav class="mb-3" small pills>
+    <b-nav class="pb-3 shadow-sm" small pills>
       <b-nav-item :active="standingsType === 'all'" @click="handleClick('all')">Overall</b-nav-item>
       <b-nav-item :active="standingsType === 'home'" @click="handleClick('home')">Home</b-nav-item>
       <b-nav-item :active="standingsType === 'away'" @click="handleClick('away')">Away</b-nav-item>

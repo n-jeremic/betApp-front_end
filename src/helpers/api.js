@@ -18,9 +18,9 @@ export const fetchOdds = fixtureId => {
   })
 }
 
-export const fetchPlayers = teamId => {
+export const fetchPlayers = (teamId, pageNumber) => {
   return soccerApiAxios({
-    url: `/players?team=${teamId}`
+    url: `/players?team=${teamId}&page=${pageNumber}`
   })
 }
 

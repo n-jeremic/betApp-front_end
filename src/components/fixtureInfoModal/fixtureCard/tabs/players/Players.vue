@@ -1,23 +1,23 @@
 <template>
   <div>
-    <b-nav class="mb-3" pills justified small>
+    <b-nav class="pb-3 shadow-sm" pills justified small>
       <b-nav-item :active="activeTeam === 'homeTeam'" @click="handleClick('homeTeam')">
-        {{ tabData.homeTeam.name }}
+        {{ tabData.teams.home.name }}
       </b-nav-item>
       <b-nav-item :active="activeTeam === 'awayTeam'" @click="handleClick('awayTeam')">
-        {{ tabData.awayTeam.name }}
+        {{ tabData.teams.away.name }}
       </b-nav-item>
     </b-nav>
-    <app-games-table :team="tabData[activeTeam]"/>
+    <app-players-tables :players="tabData[activeTeam]" ref="tables" />
   </div>
 </template>
 
 <script>
-import GamesTable from './GamesTable.vue'
+import PlayersTables from './PlayersTables.vue'
 
 export default {
   components: {
-    appGamesTable: GamesTable
+    appPlayersTables: PlayersTables
   },
   props: {
     tabData: Object
@@ -31,6 +31,7 @@ export default {
     handleClick (team) {
       if (this.activeTeam !== team) {
         this.activeTeam = team
+        this.$refs.tables.$el.scrollTo(0, 0)
       }
     }
   }

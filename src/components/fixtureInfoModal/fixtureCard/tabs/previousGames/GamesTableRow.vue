@@ -3,7 +3,7 @@
     <b-td>
       {{ fixtureDate }}
     </b-td>
-    <b-td>
+    <b-td :id="`${this.fixture.fixture.id}-tooltip-previous-games`">
       <img
         :src="this.fixture.league.flag ? this.fixture.league.flag : this.fixture.league.logo"
         :alt="`${this.fixture.league.name}-flag`"
@@ -24,6 +24,10 @@
         rounded
       />
     </b-td>
+    <b-tooltip
+      :target="`${this.fixture.fixture.id}-tooltip-previous-games`"
+      noninteractive
+    >{{ this.fixture.league.name }}</b-tooltip>
   </b-tr>
 </template>
 
