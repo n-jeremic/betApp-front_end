@@ -1,11 +1,24 @@
 <template>
-  <b-card-header class="padding" header-bg-variant="secondary" header-text-variant="white">
+  <b-card-header class="padding shadow-sm">
     <b-row>
       <b-col cols="6">
-        {{ fixtureTime }}
+        <img :src="fixture.league.flag" alt="">
+        <span class="align-middle">
+          {{ `${fixture.league.name} - ${fixtureRound}` }}
+        </span>
       </b-col>
-      <b-col cols="6" class="text-right">
-        {{ fixtureRound }}
+      <b-col cols="5" class="text-right">
+        <span class="align-middle">
+          {{ fixtureTime }}
+        </span>
+      </b-col>
+      <b-col cols="1" class="no-padding">
+        <b-dropdown size="sm" variant="outline-dark" no-caret block>
+          <template v-slot:button-content>
+            <b-icon icon="three-dots-vertical"></b-icon>
+          </template>
+          <b-dropdown-item @click="closeModalFn">Close window</b-dropdown-item>
+        </b-dropdown>
       </b-col>
     </b-row>
   </b-card-header>
@@ -19,7 +32,8 @@ import {
 
 export default {
   props: {
-    fixture: Object
+    fixture: Object,
+    closeModalFn: Function
   },
   data () {
     return {
@@ -32,6 +46,17 @@ export default {
 
 <style scoped>
 .padding {
-  padding: 0.5rem 0.8rem;
+  padding: 0.3rem 0.8rem;
+}
+
+.no-padding {
+  padding: 0;
+  padding-right: 0.5rem;
+}
+
+img {
+  width: 30px;
+  margin-right: 3px;
+  margin-top: 2px;
 }
 </style>

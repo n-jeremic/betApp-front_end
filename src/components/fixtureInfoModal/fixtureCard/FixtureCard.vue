@@ -1,10 +1,10 @@
 <template>
   <b-card no-body class="full-height" border-variant="secondary">
-    <app-card-header :fixture="fixtureBasicInfo" />
+    <app-card-header :fixture="fixtureBasicInfo" :closeModalFn="closeModalFn" />
     <b-card-body class="card-body-padding full-height">
       <app-teams-output :teams="fixtureBasicInfo.teams" />
       <app-tabs v-if="responseData" :tabsData="responseData" />
-      <app-loader v-if="loadingData" :marginTop="'6rem'" :spinnerType="'grow'" />
+      <app-loader v-if="loadingData" :marginTop="'6rem'" :spinnerType="'border'" />
     </b-card-body>
   </b-card>
 </template>
@@ -23,6 +23,7 @@ import {
 } from '../../../helpers/api'
 import {
   filterPlayersData,
+  filterOdds,
   saveResponseInLocalStorage,
   checkFixtureInLocalStorage,
   getFixtureFromLocalStorage
@@ -36,7 +37,8 @@ export default {
     appLoader: Loader
   },
   props: {
-    fixtureBasicInfo: Object
+    fixtureBasicInfo: Object,
+    closeModalFn: Function
   },
   data () {
     return {
@@ -93,7 +95,7 @@ export default {
         basicInfoObjRef
       )
       this.assignStandingsToResponseData(responses[9][0].league, responseDataObjRef, basicInfoObjRef)
-      responseDataObjRef.odds = responses[8][0].bookmakers[0].bets
+      responseDataObjRef.odds = filterOdds(responses[8][0].bookmakers[0].bets)
     },
     assignGamesToResponseData (gamesType, apiResponseObj, responseDataObjRef, basicInfoObjRef) {
       responseDataObjRef[gamesType] = {}

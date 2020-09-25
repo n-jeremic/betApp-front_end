@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import OddsTab from './tabs/Odds.vue'
+import OddsTab from './tabs/odds/Odds.vue'
 import PreviousGamesTab from './tabs/previousGames/PreviousGames.vue'
 import NextGamesTab from './tabs/nextGames/NextGames.vue'
 import StandingsTab from './tabs/standings/Standings.vue'
@@ -55,10 +55,10 @@ export default {
 }
 
 .tab-content {
-  padding: 1rem 0;
+  padding-top: 1rem;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 470px;
+  max-height: 463px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

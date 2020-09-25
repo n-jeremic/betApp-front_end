@@ -14,8 +14,8 @@
       <b-col cols="6" class="text-right">
         <h4 class="mt-1">{{ leagueInfo.name }}</h4>
         <span class="ml-3">
-          <b-icon v-if="listOpen" icon="arrow-up-circle" font-scale="1.5" shift-v="-5"></b-icon>
-          <b-icon v-else icon="arrow-down-circle" font-scale="1.5" shift-v="-5"></b-icon>
+          <b-icon v-if="listOpen" icon="chevron-up" font-scale="1.5" shift-v="-5"></b-icon>
+          <b-icon v-else icon="chevron-down" font-scale="1.5" shift-v="-5"></b-icon>
         </span>
       </b-col>
     </b-row>

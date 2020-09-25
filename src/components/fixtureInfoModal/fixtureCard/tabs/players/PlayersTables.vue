@@ -58,7 +58,7 @@ export default {
 
 <style scoped>
 .tables-container {
-  max-height: 385px;
+  max-height: 395px;
   overflow-y: auto;
 }
 

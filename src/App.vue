@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ModalController from './components/fixtureInfoModal/Modal.vue'
+import ModalController from './components/fixtureInfoModal/ModalController.vue'
 
 export default {
   components: {

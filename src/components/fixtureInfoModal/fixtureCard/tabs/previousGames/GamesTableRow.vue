@@ -1,5 +1,5 @@
 <template>
-  <b-tr>
+  <b-tr @click="handleClick">
     <b-td>
       {{ fixtureDate }}
     </b-td>
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import EventBus from '../../../../../eventBus'
+
 export default {
   props: {
     teamId: Number,
@@ -74,6 +76,11 @@ export default {
       const leagueArr = this.fixture.league.name.split(' ')
       if (leagueArr.length > 1) return `${leagueArr[0][0]}${leagueArr[1][0]}`
       else return leagueArr[0][0]
+    }
+  },
+  methods: {
+    handleClick () {
+      EventBus.$emit('openPreviousGame', this.fixture.fixture.id)
     }
   }
 }
