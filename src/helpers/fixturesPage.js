@@ -2,10 +2,14 @@ export const generatePeriods = numOfPeriods => {
   const periods = []
 
   for (let i = 0; i < numOfPeriods; i++) {
-    const from = new Date()
+    let from
     if (periods.length) {
-      from.setDate(periods[i - 1].to.getDate() + 1)
+      from = new Date(periods[i - 1].to.getTime())
+      from.setDate(from.getDate() + 1)
+    } else {
+      from = new Date()
     }
+
     const to = generateEndDateBasedOnStartDate(from)
     periods.push({
       from,
@@ -65,7 +69,7 @@ export const filterMockedResponses = responsesArray => {
 }
 
 const generateEndDateBasedOnStartDate = startDateObject => {
-  let result = new Date()
+  let result = new Date(startDateObject.getTime())
   const requiredDay = startDateObject.getDay()
   const requiredDate = startDateObject.getDate()
 
