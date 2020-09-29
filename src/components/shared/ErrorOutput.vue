@@ -1,5 +1,8 @@
 <template>
-  <b-card class="shadow-sm error-message">
+  <b-card
+    class="shadow-sm error-message"
+    :style="{ 'font-size': fontSize, 'margin-top': noMargin ? '0' : '2rem' }"
+  >
     {{ errorMessage }}
   </b-card>
 </template>
@@ -7,7 +10,9 @@
 <script>
 export default {
   props: {
-    errorMessage: String
+    errorMessage: String,
+    fontSize: String,
+    noMargin: Boolean
   }
 }
 </script>
@@ -15,9 +20,7 @@ export default {
 <style scoped>
 .error-message {
   text-align: center;
-  font-size: 20px;
   font-weight: 600;
   color: #595959;
-  margin-top: 2rem;
 }
 </style>

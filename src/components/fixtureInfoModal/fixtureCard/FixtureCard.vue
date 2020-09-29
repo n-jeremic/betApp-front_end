@@ -5,6 +5,11 @@
       <app-teams-output :teams="fixtureBasicInfo.teams" />
       <app-tabs v-if="responseData" :tabsData="responseData" />
       <app-loader v-if="loadingData" :marginTop="'6rem'" :spinnerType="'border'" />
+      <app-error-output
+        v-if="errorMessage && !loadingData"
+        :errorMessage="errorMessage"
+        :fontSize="'18px'"
+      />
     </b-card-body>
   </b-card>
 </template>
@@ -14,6 +19,7 @@ import CardHeader from './CardHeader.vue'
 import Tabs from './Tabs.vue'
 import TeamsOutput from './TeamsOutput.vue'
 import Loader from '../../shared/Loader.vue'
+import ErrorOutput from '../../shared/ErrorOutput.vue'
 import {
   fetchGames,
   fetchOdds,
@@ -34,7 +40,8 @@ export default {
     appCardHeader: CardHeader,
     appTeamsOutput: TeamsOutput,
     appTabs: Tabs,
-    appLoader: Loader
+    appLoader: Loader,
+    appErrorOutput: ErrorOutput
   },
   props: {
     fixtureBasicInfo: Object,
@@ -43,7 +50,8 @@ export default {
   data () {
     return {
       responseData: null,
-      loadingData: false
+      loadingData: false,
+      errorMessage: null
     }
   },
   methods: {
@@ -68,7 +76,7 @@ export default {
         saveResponseInLocalStorage(filteredResponses, basicInfoObjRef.fixture.id)
         this.assignResponseData(filteredResponses)
       } catch (err) {
-        console.log(err)
+        this.errorMessage = 'Sorry, we could not load the data. Try again later.'
       }
     },
     assignResponseData (responses) {

@@ -2,13 +2,13 @@ import soccerApiAxios from '../axiosInstances/soccerApiAxios'
 
 export const fetchLeagueFixtures = (leagueId, from, to) => {
   return soccerApiAxios({
-    url: `/fixtures?league=${leagueId}&from=${from}&to=${to}`
+    url: `/fixtures?league=${leagueId}&from=${from}&to=${to}&season=2020`
   })
 }
 
 export const fetchGames = (teamId, type, numOfGames) => {
   return soccerApiAxios({
-    url: `/fixtures?team=${teamId}&${type}=${numOfGames}`
+    url: `/fixtures?team=${teamId}&${type}=${numOfGames}&season=2020`
   })
 }
 
@@ -20,13 +20,19 @@ export const fetchOdds = fixtureId => {
 
 export const fetchPlayers = (teamId, pageNumber) => {
   return soccerApiAxios({
-    url: `/players?team=${teamId}&page=${pageNumber}`
+    url: `/players?team=${teamId}&page=${pageNumber}&season=2020`
   })
 }
 
 export const fetchStandings = leagueId => {
   return soccerApiAxios({
-    url: `/standings?league=${leagueId}`
+    url: `/standings?league=${leagueId}&season=2020`
+  })
+}
+
+export const fetchFixtureDetails = fixtureId => {
+  return soccerApiAxios({
+    url: `/fixtures?id=${fixtureId}`
   })
 }
 

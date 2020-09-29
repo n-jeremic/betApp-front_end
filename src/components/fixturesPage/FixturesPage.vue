@@ -34,10 +34,11 @@
       />
     </b-container>
     <app-error-output
-      v-if="errorMessage"
+      v-if="errorMessage && !loadingData"
       :errorMessage="errorMessage"
+      :fontSize="'20px'"
     />
-    <app-loader v-if="loadingData" :marginTop="'3rem'" :spinnerType="'grow'" />
+    <app-loader v-if="loadingData" :marginTop="'3rem'" :spinnerType="'border'" />
   </div>
 </template>
 
@@ -49,7 +50,7 @@ import PeriodsList from './pageHeader/PeriodsList.vue'
 import ErrorOutput from '../shared/ErrorOutput.vue'
 import Loader from '../shared/Loader.vue'
 import { generateDateString, generatePeriods, sortFixturesByDate, filterMockedResponses } from '../../helpers/fixturesPage'
-import { fetchLeagueFixtures } from '../../helpers/api'
+import { fetchLeagueFixtures, filterResolvedPromises } from '../../helpers/api'
 import appLeagues from '../../appLeagues.json'
 import mockData from '../../../mockdata/leagueFixturesMock.json'
 
@@ -109,18 +110,20 @@ export default {
     },
     async getFixturesData () {
       this.initRequest()
-      // try {
-      //   const resolvedPromises = await Promise.all(this.createPromisesArray())
-      //   const filteredResponses = filterResolvedPromises(resolvedPromises)
-      //   if (filteredResponses.length) {
-      //     this.fixturesData = sortFixturesByDate(filteredResponses)
-      //     this.loadingData = false
-      //   } else {
-      //     this.handleError('No games found for this date.')
-      //   }
-      // } catch (err) {
-      //   this.handleError('Sorry, we could not load the data. Try again later.')
-      // }
+      try {
+        const resolvedPromises = await Promise.all(this.createPromisesArray())
+        const filteredResponses = filterResolvedPromises(resolvedPromises)
+        if (filteredResponses.length) {
+          this.fixturesData = sortFixturesByDate(filteredResponses)
+          this.loadingData = false
+        } else {
+          this.handleError('No games found for this date.')
+        }
+      } catch (err) {
+        this.handleError('Sorry, we could not load the data. Try again later.')
+      }
+    },
+    getFixturesMockData () {
       const filteredResponses = filterMockedResponses(mockData)
       this.fixturesData = sortFixturesByDate(filteredResponses)
       this.loadingData = false
@@ -138,7 +141,8 @@ export default {
   async created () {
     const nrDataObject = this.$options.nrData
     nrDataObject.periods = generatePeriods(nrDataObject.periodsCount)
-    await this.getFixturesData()
+    // await this.getFixturesData()
+    this.getFixturesMockData()
   }
 }
 </script>
