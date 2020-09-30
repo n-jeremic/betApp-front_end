@@ -19,7 +19,7 @@
 <script>
 import EventsTab from './tabs/events/EventsTab.vue'
 import StatsTab from './tabs/StatsTab.vue'
-import LineupsTab from './tabs/LineupsTab.vue'
+import LineupsTab from './tabs/lineups/LineupsTab.vue'
 
 export default {
   components: {

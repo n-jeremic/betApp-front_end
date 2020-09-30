@@ -1,10 +1,11 @@
 <template>
   <b-card
     :header="headerTitle"
-    header-class="text-center padding"
+    header-class="text-center p-2"
     header-tag="h5"
     header-border-variant="info"
     class="mb-4 shadow-sm"
+    body-class="p-2"
   >
     <b-row>
       <b-col cols="4" v-for="(oddObject, index) in oddsArray" :key="index">
@@ -14,6 +15,7 @@
           body-class="text-center padding"
           header-bg-variant="info"
           header-text-variant="white"
+          class="shadow-sm"
         >
           <b-card-text>{{ oddObject[Object.keys(oddObject)[0]] }}</b-card-text>
         </b-card>
@@ -39,7 +41,7 @@ export default {
 
 <style scoped>
 .padding {
-  padding: 0.5rem;
+  padding: 0.2rem;
 }
 
 h5.card-header {

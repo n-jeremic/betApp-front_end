@@ -51,9 +51,11 @@ export default {
 
 <style scoped>
 img {
+  height: 15px;
   width: 20px;
   margin-left: 0.3rem;
   margin-bottom: 0.2rem;
+  object-fit: contain;
 }
 
 .right-border {

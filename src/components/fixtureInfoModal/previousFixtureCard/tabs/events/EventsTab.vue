@@ -1,24 +1,42 @@
 <template>
   <b-table-simple class="mb-1 shadow-sm" small outlined>
     <b-tbody>
-      <b-th class="text-center" variant="secondary">
-        {{ `First Half:  ${score.halftime.home} - ${score.halftime.away}` }}
-      </b-th>
+      <b-tr>
+        <b-th class="text-center" variant="secondary">
+          {{ `First Half:  ${score.halftime.home} - ${score.halftime.away}` }}
+        </b-th>
+      </b-tr>
       <app-event-table-row
         v-for="(event, index) in mappedEvents.firstHalf"
         :key="index"
         :event="event"
         :teams="teams"
       />
-      <b-th class="text-center" variant="secondary">
-        {{ `Second Half:  ${score.fulltime.home - score.halftime.home} - ${score.fulltime.away - score.halftime.away}` }}
-      </b-th>
+      <b-tr>
+        <b-td
+          v-if="!mappedEvents.firstHalf.length"
+          class="text-center"
+          style="font-size: 14px"
+        >No events in the first half.</b-td>
+      </b-tr>
+      <b-tr>
+        <b-th class="text-center" variant="secondary">
+          {{ `Second Half:  ${score.fulltime.home - score.halftime.home} - ${score.fulltime.away - score.halftime.away}` }}
+        </b-th>
+      </b-tr>
       <app-event-table-row
         v-for="(event, index) in mappedEvents.secondHalf"
-        :key="index"
+        :key="(index + 1) * 115"
         :event="event"
         :teams="teams"
       />
+      <b-tr>
+        <b-td
+          v-if="!mappedEvents.secondHalf.length"
+          class="text-center"
+          style="font-size: 14px"
+        >No events in the second half.</b-td>
+      </b-tr>
     </b-tbody>
   </b-table-simple>
 </template>

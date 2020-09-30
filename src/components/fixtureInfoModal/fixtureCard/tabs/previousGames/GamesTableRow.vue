@@ -92,7 +92,9 @@ export default {
 }
 
 img {
+  height: 15px;
   width: 20px;
+  object-fit: contain;
   margin-right: 0.3rem;
   margin-bottom: 0.2rem;
 }
