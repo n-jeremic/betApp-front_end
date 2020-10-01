@@ -1,5 +1,5 @@
 <template>
-  <b-tr @click="handleClick">
+  <b-tr @click="handleClick" :class="{ 'default-cursor': !isFixtureClickable }">
     <b-td>
       {{ fixtureDate }}
     </b-td>
@@ -76,11 +76,16 @@ export default {
       const leagueArr = this.fixture.league.name.split(' ')
       if (leagueArr.length > 1) return `${leagueArr[0][0]}${leagueArr[1][0]}`
       else return leagueArr[0][0]
+    },
+    isFixtureClickable () {
+      return this.fixture.league.name !== 'Friendlies Clubs'
     }
   },
   methods: {
     handleClick () {
-      EventBus.$emit('openPreviousGame', this.fixture.fixture.id)
+      if (this.isFixtureClickable) {
+        EventBus.$emit('openPreviousGame', this.fixture.fixture.id)
+      }
     }
   }
 }
@@ -89,6 +94,10 @@ export default {
 <style scoped>
 .score-output {
   font-weight: 600;
+}
+
+.default-cursor {
+  cursor: default !important;
 }
 
 img {

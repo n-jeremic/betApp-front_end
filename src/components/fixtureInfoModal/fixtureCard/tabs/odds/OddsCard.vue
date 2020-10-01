@@ -3,7 +3,7 @@
     :header="headerTitle"
     header-class="text-center p-2"
     header-tag="h5"
-    header-border-variant="info"
+    header-border-variant="secondary"
     class="mb-4 shadow-sm"
     body-class="p-2"
   >
@@ -13,7 +13,7 @@
           :header="Object.keys(oddObject)[0]"
           header-class="text-center padding"
           body-class="text-center padding"
-          header-bg-variant="info"
+          header-bg-variant="secondary"
           header-text-variant="white"
           class="shadow-sm"
         >
