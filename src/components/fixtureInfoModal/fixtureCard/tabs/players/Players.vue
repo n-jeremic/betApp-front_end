@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 100%;">
     <b-nav class="pb-3 shadow-sm" pills justified small>
       <b-nav-item :active="activeTeam === 'homeTeam'" @click="handleClick('homeTeam')">
         {{ tabData.teams.home.name }}

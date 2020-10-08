@@ -13,9 +13,10 @@
             @selectedPeriodChanged="handleSelectedPeriodChange"
           />
         </b-col>
-        <b-col cols="3">
+        <b-col cols="3" ref="calendarColumn">
           <app-calendar
             :selectedDate="selectedDate"
+            :calendarColumnRef="calendarColumnRef"
             @input="handleCalendarInputEvent"
           />
         </b-col>
@@ -71,7 +72,8 @@ export default {
       fixturesData: null,
       errorMessage: null,
       loadingData: false,
-      sidebarOpened: false
+      sidebarOpened: false,
+      calendarColumnRef: null
     }
   },
   nrData: {
@@ -143,6 +145,9 @@ export default {
     nrDataObject.periods = generatePeriods(nrDataObject.periodsCount)
     // await this.getFixturesData()
     this.getFixturesMockData()
+  },
+  mounted () {
+    this.calendarColumnRef = this.$refs.calendarColumn
   }
 }
 </script>

@@ -50,15 +50,15 @@ export default {
 <style scoped>
 .nav-container {
   margin-top: 1rem;
-  max-height: 82%;
+  height: 82%;
   overflow-y: hidden;
 }
 
 .tab-content {
   padding-top: 1rem;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
-  max-height: 463px;
+  height: 93%;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -70,5 +70,22 @@ export default {
 .tab-content {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #007bff;
+}
+
+.nav-tabs .nav-link.active {
+  border-color: #007bff #007bff #fff !important;
+  color: #007bff !important;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #e9ecef #e9ecef #007bff;
+  color: #0056b3;
+}
+.nav-item a {
+  color: #71808e;
 }
 </style>

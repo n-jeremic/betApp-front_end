@@ -9,6 +9,6 @@ export default axios.create({
   baseURL: 'https://v3.football.api-sports.io',
   method: 'GET',
   headers: {
-    'x-rapidapi-key': accessKeys[0]
+    'x-rapidapi-key': accessKeys[1]
   }
 })

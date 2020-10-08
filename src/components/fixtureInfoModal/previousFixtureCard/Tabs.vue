@@ -10,7 +10,7 @@
         {{ tab.name }}
       </b-nav-item>
     </b-nav>
-    <div class="tab-content">
+    <div class="tab-content" ref="tabContent">
       <component :is="activeTab" :tabData="tabsData[activeTab]" :teams="teams" :score="score" />
     </div>
   </div>
@@ -44,7 +44,10 @@ export default {
   },
   methods: {
     changeTab (tab) {
-      if (this.activeTab !== tab) this.activeTab = tab
+      if (this.activeTab !== tab) {
+        this.activeTab = tab
+        this.$refs.tabContent.scrollTo(0, 0)
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 100%;">
     <b-nav class="pb-3 shadow-sm" small pills>
       <b-nav-item :active="standingsType === 'all'" @click="handleClick('all')">Overall</b-nav-item>
       <b-nav-item :active="standingsType === 'home'" @click="handleClick('home')">Home</b-nav-item>

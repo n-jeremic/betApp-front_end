@@ -28,10 +28,10 @@
         >{{ playerObj.player.pos }}</b-td>
         <b-td>{{ playerObj.player.name | formatPlayerName }}</b-td>
       </b-tr>
-      <b-tr>
+      <b-tr v-if="lineupsData.coach.name">
         <b-th colspan="2">Coach:</b-th>
       </b-tr>
-      <b-tr>
+      <b-tr v-if="lineupsData.coach.name">
         <b-td colspan="2">{{ lineupsData.coach.name }}</b-td>
       </b-tr>
     </b-table-simple>
