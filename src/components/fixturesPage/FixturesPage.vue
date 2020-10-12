@@ -51,7 +51,7 @@ import PeriodsList from './pageHeader/PeriodsList.vue'
 import ErrorOutput from '../shared/ErrorOutput.vue'
 import Loader from '../shared/Loader.vue'
 import { generateDateString, generatePeriods, sortFixturesByDate, filterMockedResponses } from '../../helpers/fixturesPage'
-import { fetchLeagueFixtures, filterResolvedPromises } from '../../helpers/api'
+import { filterResolvedPromise, globalErrorHandler } from '../../helpers/api'
 import appLeagues from '../../appLeagues.json'
 import mockData from '../../../mockdata/leagueFixturesMock.json'
 
@@ -107,22 +107,26 @@ export default {
       return appLeagues.map(league => {
         const from = requiredPeriod ? requiredPeriod.from : this.selectedDate
         const to = requiredPeriod ? requiredPeriod.to : this.selectedDate
-        return fetchLeagueFixtures(league.id, from, to)
+        return this.$store.dispatch('soccerApi/fetchLeagueFixtures', { leagueId: league.id, from, to })
       })
     },
     async getFixturesData () {
       this.initRequest()
       try {
         const resolvedPromises = await Promise.all(this.createPromisesArray())
-        const filteredResponses = filterResolvedPromises(resolvedPromises)
+        const filteredResponses = filterResolvedPromise(resolvedPromises, 'array')
         if (filteredResponses.length) {
           this.fixturesData = sortFixturesByDate(filteredResponses)
           this.loadingData = false
         } else {
-          this.handleError('No games found for this date.')
+          this.handleDataError('No games found for this date.')
         }
       } catch (err) {
-        this.handleError('Sorry, we could not load the data. Try again later.')
+        await globalErrorHandler(
+          err,
+          { callback: this.handleDataError, argument: 'Sorry, we could not load the data. Try again later.' },
+          this.getFixturesData
+        )
       }
     },
     getFixturesMockData () {
@@ -135,7 +139,7 @@ export default {
       this.fixturesData = null
       if (this.errorMessage) this.errorMessage = null
     },
-    handleError (message) {
+    handleDataError (message) {
       this.errorMessage = message
       this.loadingData = false
     }

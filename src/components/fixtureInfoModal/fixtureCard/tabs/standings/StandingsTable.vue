@@ -1,6 +1,6 @@
 <template>
   <div class="table-container">
-    <b-table-simple class="shadow-sm" small hover outlined>
+    <b-table-simple class="shadow-sm mb-1" small hover outlined>
       <b-thead head-variant="light">
         <b-th></b-th>
         <b-th>Team</b-th>
@@ -57,9 +57,5 @@ export default {
 
 .th-padding {
   padding: 0.3rem 0.6rem;
-}
-
-.table {
-  margin-bottom: 0 !important;
 }
 </style>

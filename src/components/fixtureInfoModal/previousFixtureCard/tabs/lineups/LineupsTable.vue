@@ -7,7 +7,13 @@
   >
     <b-table-simple class="mb-0" small>
       <b-tr>
-        <b-th colspan="2" class="border-top-0">First squad:</b-th>
+        <b-th colspan="2" class="border-top-0">
+          Formation:
+          <span class="font-weight-normal ml-1">{{ lineupsData.formation }}</span>
+        </b-th>
+      </b-tr>
+      <b-tr>
+        <b-th colspan="2">First squad:</b-th>
       </b-tr>
       <b-tr v-for="playerObj in sortPlayersByPosition(lineupsData.startXI)" :key="playerObj.player.id">
         <b-td

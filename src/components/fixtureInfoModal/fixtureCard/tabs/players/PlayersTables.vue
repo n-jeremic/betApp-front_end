@@ -63,7 +63,7 @@ export default {
 }
 
 .table:last-child {
-  margin-bottom: 0 !important;
+  margin-bottom: 5px !important;
 }
 
 img {

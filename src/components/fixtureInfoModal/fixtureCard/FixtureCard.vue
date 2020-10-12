@@ -20,13 +20,7 @@ import Tabs from './Tabs.vue'
 import TeamsOutput from './TeamsOutput.vue'
 import Loader from '../../shared/Loader.vue'
 import ErrorOutput from '../../shared/ErrorOutput.vue'
-import {
-  fetchGames,
-  fetchOdds,
-  fetchPlayers,
-  fetchStandings,
-  filterResolvedPromises
-} from '../../../helpers/api'
+import { filterResolvedPromise, globalErrorHandler } from '../../../helpers/api'
 import {
   filterPlayersData,
   filterOdds,
@@ -61,23 +55,26 @@ export default {
         const homeTeam = basicInfoObjRef.teams.home
         const awayTeam = basicInfoObjRef.teams.away
         const responses = await Promise.all([
-          fetchGames(homeTeam.id, 'last', 10),
-          fetchGames(awayTeam.id, 'last', 10),
-          fetchGames(homeTeam.id, 'next', 10),
-          fetchGames(awayTeam.id, 'next', 10),
-          fetchPlayers(homeTeam.id, 1),
-          fetchPlayers(homeTeam.id, 2),
-          fetchPlayers(awayTeam.id, 1),
-          fetchPlayers(awayTeam.id, 2),
-          fetchOdds(basicInfoObjRef.fixture.id),
-          fetchStandings(basicInfoObjRef.league.id)
+          this.$store.dispatch('soccerApi/fetchGames', { teamId: homeTeam.id, type: 'last', numOfGames: 10 }),
+          this.$store.dispatch('soccerApi/fetchGames', { teamId: awayTeam.id, type: 'last', numOfGames: 10 }),
+          this.$store.dispatch('soccerApi/fetchGames', { teamId: homeTeam.id, type: 'next', numOfGames: 10 }),
+          this.$store.dispatch('soccerApi/fetchGames', { teamId: awayTeam.id, type: 'next', numOfGames: 10 }),
+          this.$store.dispatch('soccerApi/fetchPlayers', { teamId: homeTeam.id, pageNumber: 1 }),
+          this.$store.dispatch('soccerApi/fetchPlayers', { teamId: homeTeam.id, pageNumber: 2 }),
+          this.$store.dispatch('soccerApi/fetchPlayers', { teamId: awayTeam.id, pageNumber: 1 }),
+          this.$store.dispatch('soccerApi/fetchPlayers', { teamId: awayTeam.id, pageNumber: 2 }),
+          this.$store.dispatch('soccerApi/fetchOdds', basicInfoObjRef.fixture.id),
+          this.$store.dispatch('soccerApi/fetchStandings', basicInfoObjRef.league.id)
         ])
-        const filteredResponses = filterResolvedPromises(responses)
+        const filteredResponses = filterResolvedPromise(responses, 'array')
         saveResponseInLocalStorage(filteredResponses, basicInfoObjRef.fixture.id)
         this.assignResponseData(filteredResponses)
       } catch (err) {
-        this.errorMessage = 'Sorry, we could not load the data. Try again later.'
+        await globalErrorHandler(err, { callback: this.handlePromiseRejection }, this.getAllData)
       }
+    },
+    handlePromiseRejection () {
+      this.errorMessage = 'Sorry, we could not load the data. Try again later.'
     },
     assignResponseData (responses) {
       this.responseData = {}

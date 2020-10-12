@@ -34,12 +34,17 @@ export default {
   },
   data () {
     return {
-      tabs: [
-        { name: 'Events', prop: 'events' },
-        { name: 'Stats', prop: 'statistics' },
-        { name: 'Lineups', prop: 'lineups' }
-      ],
       activeTab: 'events'
+    }
+  },
+  computed: {
+    tabs () {
+      const tabs = []
+      if (this.tabsData.events.length) tabs.push({ name: 'Events', prop: 'events' })
+      if (this.tabsData.statistics.length) tabs.push({ name: 'Stats', prop: 'statistics' })
+      if (this.tabsData.lineups.length) tabs.push({ name: 'Lineups', prop: 'lineups' })
+
+      return tabs
     }
   },
   methods: {

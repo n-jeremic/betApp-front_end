@@ -1,5 +1,5 @@
 <template>
-  <b-col cols="6" class="card-container">
+  <b-col cols="6" class="card-container" ref="cardContainer">
     <b-card v-if="responseData" class="full-height" no-body>
       <app-card-header :teams="responseData.teams" :goals="responseData.goals" :closeCardFn="closeCard" />
       <b-card-body class="card-body-style">
@@ -22,7 +22,7 @@ import Tabs from './Tabs.vue'
 import EventBus from '../../../eventBus'
 import Loader from '../../shared/Loader.vue'
 import ErrorOutput from '../../shared/ErrorOutput.vue'
-import { fetchFixtureDetails } from '../../../helpers/api'
+import { filterResolvedPromise, globalErrorHandler } from '../../../helpers/api'
 
 export default {
   props: {
@@ -47,18 +47,13 @@ export default {
     },
     async getFixtureDetails () {
       try {
-        const axiosResponse = await fetchFixtureDetails(this.selectedFixtureId)
-        const errors = axiosResponse.data.errors
-        if (Array.isArray(errors) && errors.length === 0) {
-          this.responseData = axiosResponse.data.response[0]
-        } else {
-          throw new Error()
-        }
+        const response = await this.$store.dispatch('soccerApi/fetchFixtureDetails', this.selectedFixtureId)
+        this.responseData = filterResolvedPromise(response, 'object')
       } catch (err) {
-        this.handlePromiseError()
+        await globalErrorHandler(err, { callback: this.handlePromiseRejection }, this.getFixtureDetails)
       }
     },
-    handlePromiseError () {
+    handlePromiseRejection () {
       this.errorMessage = 'Sorry, we could not load the data. Try again later.'
       window.setTimeout(() => this.closeCard(), 1500)
     }
@@ -66,6 +61,8 @@ export default {
   async created () {
     await this.getFixtureDetails()
     this.loadingData = false
+    await this.$nextTick()
+    this.$refs.cardContainer.scrollIntoView({ behavior: 'smooth' })
   }
 }
 </script>

@@ -15,7 +15,6 @@
           body-class="text-center padding"
           header-bg-variant="secondary"
           header-text-variant="white"
-          class="shadow-sm"
         >
           <b-card-text>{{ oddObject[Object.keys(oddObject)[0]] }}</b-card-text>
         </b-card>
