@@ -51,7 +51,7 @@ import PeriodsList from './pageHeader/PeriodsList.vue'
 import ErrorOutput from '../shared/ErrorOutput.vue'
 import Loader from '../shared/Loader.vue'
 import { generateDateString, generatePeriods, sortFixturesByDate, filterMockedResponses } from '../../helpers/fixturesPage'
-import { filterResolvedPromise, globalErrorHandler } from '../../helpers/api'
+import { filterResolvedPromise, globalErrorHandler } from '../../helpers/soccerApi'
 import appLeagues from '../../appLeagues.json'
 import mockData from '../../../mockdata/leagueFixturesMock.json'
 

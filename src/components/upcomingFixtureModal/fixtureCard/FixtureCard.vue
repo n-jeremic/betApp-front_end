@@ -20,14 +20,14 @@ import Tabs from './Tabs.vue'
 import TeamsOutput from './TeamsOutput.vue'
 import Loader from '../../shared/Loader.vue'
 import ErrorOutput from '../../shared/ErrorOutput.vue'
-import { filterResolvedPromise, globalErrorHandler } from '../../../helpers/api'
+import { filterResolvedPromise, globalErrorHandler } from '../../../helpers/soccerApi'
 import {
   filterPlayersData,
   filterOdds,
   saveResponseInLocalStorage,
   checkFixtureInLocalStorage,
   getFixtureFromLocalStorage
-} from '../../../helpers/fixtureInfoModal'
+} from '../../../helpers/upcomingFixture'
 
 export default {
   components: {

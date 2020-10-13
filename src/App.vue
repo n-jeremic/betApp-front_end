@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ModalController from './components/fixtureInfoModal/ModalController.vue'
+import ModalController from './components/ModalController.vue'
 
 export default {
   components: {
@@ -31,6 +31,17 @@ export default {
 
 #app {
   margin: 1rem 0;
+}
+
+.modal-style {
+  padding: 1rem 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* width */

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import FixtureItem from '../../shared/fixtureListItem/FixtureItem.vue'
+import FixtureItem from './fixtureListItem/FixtureItem.vue'
 import LeagueHeader from './LeagueHeader.vue'
 
 export default {

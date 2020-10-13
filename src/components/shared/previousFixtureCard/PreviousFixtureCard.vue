@@ -1,5 +1,5 @@
 <template>
-  <b-col cols="6" class="card-container" ref="cardContainer">
+  <b-col cols="6" class="card-container" ref="cardContainer" :style="{ height: cardHeight }">
     <b-card v-if="responseData" class="full-height" no-body>
       <app-card-header :teams="responseData.teams" :goals="responseData.goals" :closeCardFn="closeCard" />
       <b-card-body class="card-body-style">
@@ -22,11 +22,12 @@ import Tabs from './Tabs.vue'
 import EventBus from '../../../eventBus'
 import Loader from '../../shared/Loader.vue'
 import ErrorOutput from '../../shared/ErrorOutput.vue'
-import { filterResolvedPromise, globalErrorHandler } from '../../../helpers/api'
+import { filterResolvedPromise, globalErrorHandler } from '../../../helpers/soccerApi'
 
 export default {
   props: {
-    selectedFixtureId: Number
+    selectedFixtureId: Number,
+    cardHeight: String
   },
   components: {
     appLoader: Loader,
@@ -69,7 +70,6 @@ export default {
 
 <style scoped>
 .card-container {
-  height: 55%;
   margin-bottom: 1rem;
 }
 

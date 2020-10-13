@@ -1,5 +1,5 @@
 <template>
-  <div id="modal">
+  <div class="modal-style">
     <b-container class="full-height" fluid>
       <b-row class="full-height">
         <b-col cols="5" class="full-height">
@@ -11,6 +11,7 @@
               v-for="fixtureId in openedPreviousGames"
               :key="fixtureId"
               :selectedFixtureId="fixtureId"
+              :cardHeight="'55%'"
             />
           </b-row>
         </b-col>
@@ -21,7 +22,7 @@
 
 <script>
 import FixtureCard from './fixtureCard/FixtureCard.vue'
-import PreviousFixtureCard from './previousFixtureCard/PreviousFixtureCard.vue'
+import PreviousFixtureCard from '../shared/previousFixtureCard/PreviousFixtureCard.vue'
 import EventBus from '../../eventBus'
 
 export default {
@@ -59,17 +60,6 @@ export default {
 </script>
 
 <style scoped>
-#modal {
-  padding: 1rem 0;
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
 .full-height {
   height: 100%;
 }

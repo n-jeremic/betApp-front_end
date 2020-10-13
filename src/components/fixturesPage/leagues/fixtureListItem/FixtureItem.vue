@@ -43,13 +43,13 @@
 <script>
 import FixtureItemHeader from './FixtureItemHeader.vue'
 import FixtureResultOutput from './FixtureResultOutput.vue'
-import EventBus from '../../../eventBus'
+import EventBus from '../../../../eventBus'
 import {
   generateFixtureTimeString,
   generateFixtureTitle,
   generateFixtureRoundString,
   generateFixtureStatus
-} from '../../../helpers/fixtureBasicInfo'
+} from '../../../../helpers/fixtureBasicInfo'
 
 export default {
   components: {
@@ -70,14 +70,18 @@ export default {
   },
   computed: {
     isItemClickable () {
-      return this.fixtureStatus === 'Not Started'
+      return this.fixtureStatus === 'Not Started' || this.fixtureStatus === 'finished'
     }
   },
   methods: {
     handleClick () {
       if (this.isItemClickable) {
         this.hovered = false
-        EventBus.$emit('openModal', this.fixture)
+        if (this.fixtureStatus === 'Not Started') {
+          EventBus.$emit('openUpcomingFixtureModal', this.fixture)
+        } else if (this.fixtureStatus === 'finished') {
+          EventBus.$emit('openPreviousFixtureModal', this.fixture.fixture.id)
+        }
       }
     }
   }
