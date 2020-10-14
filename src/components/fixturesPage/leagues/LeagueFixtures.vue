@@ -11,7 +11,7 @@
       @mouseover="headerHovered = true"
       @mouseout="headerHovered = false"
     />
-    <b-card-body v-show="isListOpen" class="padding">
+    <b-card-body v-show="isListOpen" class="p-0">
       <b-container fluid>
         <b-row>
           <app-fixture-item
@@ -31,8 +31,7 @@ import LeagueHeader from './LeagueHeader.vue'
 
 export default {
   props: {
-    fixtures: Array,
-    listInitiallyOpen: Boolean
+    fixtures: Array
   },
   components: {
     appFixtureItem: FixtureItem,
@@ -41,7 +40,7 @@ export default {
   data () {
     return {
       leagueInfo: this.fixtures[0].league,
-      isListOpen: this.listInitiallyOpen,
+      isListOpen: false,
       headerHovered: false
     }
   }
@@ -49,10 +48,6 @@ export default {
 </script>
 
 <style scoped>
-.padding {
-  padding: 0;
-}
-
 .container-margin {
   margin-bottom: 2rem;
 }

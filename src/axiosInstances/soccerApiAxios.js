@@ -2,5 +2,8 @@ import axios from 'axios'
 
 export default axios.create({
   baseURL: 'https://v3.football.api-sports.io',
-  method: 'GET'
+  method: 'GET',
+  headers: {
+    'x-rapidapi-host': 'v3.football.api-sports.io'
+  }
 })

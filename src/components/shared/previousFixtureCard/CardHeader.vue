@@ -1,9 +1,17 @@
 <template>
-  <b-card-header header-border-variant="secondary" class="header-modified text-center">
-      <span class="mr-2">{{ teams.home.name }}</span>
-      <span>{{ `${goals.home} - ${goals.away}` }}</span>
-      <span class="ml-2">{{ teams.away.name }}</span>
-    <b-icon icon="x-circle-fill" shift-v="-4" variant="danger" class="close-icon" @click="closeCardFn" />
+  <b-card-header header-border-variant="secondary" class="header-modified">
+      <b-row>
+        <b-col cols="5" class="text-right pr-0">
+          {{ teams.home.name }}
+        </b-col>
+        <b-col cols="2" class="text-center p-0">
+          {{ `${goals.home} - ${goals.away}` }}
+        </b-col>
+        <b-col cols="5" class="pl-0">
+          {{ awayTeamName }}
+          <b-icon icon="x-circle-fill" shift-v="-4" variant="danger" class="close-icon" @click="closeCardFn" />
+        </b-col>
+      </b-row>
   </b-card-header>
 </template>
 
@@ -13,6 +21,17 @@ export default {
     teams: Object,
     goals: Object,
     closeCardFn: Function
+  },
+  computed: {
+    awayTeamName () {
+      if (this.teams.away.name.length > 15) {
+        const words = this.teams.away.name.split(' ')
+        words[0] = words[0].slice(0, 3)
+        return words.join(' ')
+      } else {
+        return this.teams.away.name
+      }
+    }
   }
 }
 </script>

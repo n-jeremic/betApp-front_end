@@ -13,7 +13,7 @@
           :header="Object.keys(oddObject)[0]"
           header-class="text-center padding"
           body-class="text-center padding"
-          header-bg-variant="secondary"
+          header-bg-variant="info"
           header-text-variant="white"
         >
           <b-card-text>{{ oddObject[Object.keys(oddObject)[0]] }}</b-card-text>

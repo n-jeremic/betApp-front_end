@@ -6,7 +6,7 @@
           <router-view/>
         </b-col>
         <b-col cols="2">
-          <b-button variant="primary" size="lg" block>Nav placeholder</b-button>
+          <app-navigation />
         </b-col>
       </b-row>
     </b-container>
@@ -16,10 +16,12 @@
 
 <script>
 import ModalController from './components/ModalController.vue'
+import Navigation from './components/Navigation.vue'
 
 export default {
   components: {
-    appModalController: ModalController
+    appModalController: ModalController,
+    appNavigation: Navigation
   }
 }
 </script>

@@ -3,12 +3,14 @@
     <b-td>
       {{ fixtureDate }}
     </b-td>
-    <b-td :id="`${this.fixture.fixture.id}-tooltip-previous-games`">
-      <img
-        :src="this.fixture.league.flag ? this.fixture.league.flag : this.fixture.league.logo"
-        :alt="`${this.fixture.league.name}-flag`"
-      >
-      <span>{{ league }}</span>
+    <b-td>
+      <span :id="`${this.fixture.fixture.id}-tooltip-previous-games`">
+        <img
+          :src="this.fixture.league.flag ? this.fixture.league.flag : this.fixture.league.logo"
+          :alt="`${this.fixture.league.name}-flag`"
+        >
+        <span>{{ league }}</span>
+      </span>
     </b-td>
     <b-td>
       {{ oppositeTeam }}

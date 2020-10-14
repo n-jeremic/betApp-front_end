@@ -31,7 +31,6 @@
         v-for="(leagueFixtures, index) in fixturesData"
         :key="index"
         :fixtures="leagueFixtures"
-        :listInitiallyOpen="index === 0 ? true : false"
       />
     </b-container>
     <app-error-output
@@ -72,7 +71,6 @@ export default {
       fixturesData: null,
       errorMessage: null,
       loadingData: false,
-      sidebarOpened: false,
       calendarColumnRef: null
     }
   },
