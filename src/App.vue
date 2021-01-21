@@ -2,26 +2,23 @@
   <div id="app">
     <b-container fluid>
       <b-row>
-        <b-col cols="10">
-          <router-view/>
-        </b-col>
-        <b-col cols="2">
-          <app-navigation />
+        <b-col cols="12">
+          <app-fixtures-page />
         </b-col>
       </b-row>
     </b-container>
-    <app-modal-controller/>
+    <app-modal-controller />
   </div>
 </template>
 
 <script>
 import ModalController from './components/ModalController.vue'
-import Navigation from './components/Navigation.vue'
+import FixturesPage from './components/fixturesPage/FixturesPage'
 
 export default {
   components: {
     appModalController: ModalController,
-    appNavigation: Navigation
+    appFixturesPage: FixturesPage
   }
 }
 </script>

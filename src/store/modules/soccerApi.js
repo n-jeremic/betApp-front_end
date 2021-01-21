@@ -1,23 +1,7 @@
 import soccerApiAxios from '../../axiosInstances/soccerApiAxios'
 
-const apiKeys = [
-  'f71bb08779b83d2e9e48e438fc3b3b82',
-  'e6b9e9b1bb5d5ce7ed09896e06b9112c',
-  '876304be924da31e2c47a53933c372cb'
-]
-
-soccerApiAxios.defaults.headers['x-rapidapi-key'] = apiKeys[0]
-
 export default {
   namespaced: true,
-  state: () => ({
-    activeApiKeyIndex: 0
-  }),
-  mutations: {
-    changeActiveApiKeyIndex (state) {
-      state.activeApiKeyIndex++
-    }
-  },
   actions: {
     fetchLeagueFixtures (context, payload) {
       return soccerApiAxios({
@@ -48,12 +32,6 @@ export default {
       return soccerApiAxios({
         url: `/fixtures?id=${fixtureId}`
       })
-    },
-    refreshApiKey ({ state, commit }) {
-      if (state.activeApiKeyIndex === apiKeys.length - 1) return 'failed'
-      commit('changeActiveApiKeyIndex')
-      soccerApiAxios.defaults.headers['x-rapidapi-key'] = apiKeys[state.activeApiKeyIndex]
-      return 'success'
     }
   }
 }

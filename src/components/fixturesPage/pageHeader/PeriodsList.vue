@@ -1,5 +1,5 @@
 <template>
-  <b-button-group class="shadow-sm">
+  <b-button-group class="shadow-sm" size="lg">
     <b-button
       v-for="(periodTitle, periodIndex) in $options.nrData.periodsTitles"
       :key="periodIndex"

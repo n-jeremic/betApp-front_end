@@ -10,5 +10,13 @@
   {
     "league": "Ligue 1, France",
     "id": 61
+  },
+  {
+    "league": "Serie A, Italy",
+    "id": 135
+  },
+  {
+    "league": "Bundesliga, Germany",
+    "id": 78
   }
 ]

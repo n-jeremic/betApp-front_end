@@ -51,7 +51,7 @@ export default {
         const response = await this.$store.dispatch('soccerApi/fetchFixtureDetails', this.selectedFixtureId)
         this.responseData = filterResolvedPromise(response, 'object')
       } catch (err) {
-        await globalErrorHandler(err, { callback: this.handlePromiseRejection }, this.getFixtureDetails)
+        globalErrorHandler({ callback: this.handlePromiseRejection })
       }
     },
     handlePromiseRejection () {

@@ -1,5 +1,3 @@
-import store from '../store/index'
-
 export const filterResolvedPromise = (apiResponse, type) => {
   if (type === 'array') {
     const map = []
@@ -8,8 +6,6 @@ export const filterResolvedPromise = (apiResponse, type) => {
         if (axiosObject.data.response.length) {
           map.push(axiosObject.data.response)
         }
-      } else if (axiosObject.data.errors.requests) {
-        throw new Error('api_key_expired')
       } else {
         throw new Error()
       }
@@ -18,19 +14,14 @@ export const filterResolvedPromise = (apiResponse, type) => {
     return map
   } else {
     if (!checkErrors(apiResponse)) return apiResponse.data.response[0]
-    else if (apiResponse.data.errors.requests) throw new Error('api_key_expired')
     else throw new Error()
   }
 }
 
-export const globalErrorHandler = async (errorObject, componentErrorHandlerObj, callbackFn) => {
-  if (errorObject.message === 'api_key_expired') {
-    const actionResponse = await store.dispatch('soccerApi/refreshApiKey')
-    if (actionResponse === 'success') return callbackFn()
-  }
-
+export const globalErrorHandler = componentErrorHandlerObj => {
   const callbackArg = componentErrorHandlerObj.argument
-  return componentErrorHandlerObj.callback(callbackArg)
+  if (callbackArg) componentErrorHandlerObj.callback(callbackArg)
+  else componentErrorHandlerObj.callback()
 }
 
 const checkErrors = axiosObject => {

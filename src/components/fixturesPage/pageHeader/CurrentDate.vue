@@ -1,5 +1,5 @@
 <template>
-  <b-input-group class="shadow-sm">
+  <b-input-group class="shadow-sm" size="lg">
     <template v-slot:prepend>
       <b-button variant="outline-dark" disabled>
         <b-icon icon="calendar-check"></b-icon>

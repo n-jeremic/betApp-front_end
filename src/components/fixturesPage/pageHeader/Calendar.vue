@@ -1,5 +1,6 @@
 <template>
   <b-form-datepicker
+    size="lg"
     local="en"
     class="shadow-sm text-center"
     placeholder="Previous fixtures"

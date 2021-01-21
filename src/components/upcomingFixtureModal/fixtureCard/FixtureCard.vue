@@ -70,7 +70,7 @@ export default {
         saveResponseInLocalStorage(filteredResponses, basicInfoObjRef.fixture.id)
         this.assignResponseData(filteredResponses)
       } catch (err) {
-        await globalErrorHandler(err, { callback: this.handlePromiseRejection }, this.getAllData)
+        globalErrorHandler({ callback: this.handlePromiseRejection })
       }
     },
     handlePromiseRejection () {

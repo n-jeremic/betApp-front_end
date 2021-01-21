@@ -5,13 +5,23 @@
         <b-col cols="3">
           <app-current-date/>
         </b-col>
-        <b-col cols="6" class="text-center">
+        <b-col cols="1"></b-col>
+        <b-col cols="4" class="text-center">
           <app-periods-list
             v-if="activePeriodIndex !== null"
             :periods="$options.nrData.periods"
             :activePeriodIndex="activePeriodIndex"
             @selectedPeriodChanged="handleSelectedPeriodChange"
           />
+        </b-col>
+        <b-col cols="1" class="pl-0">
+          <b-icon
+            v-if="activePeriodIndex !== null"
+            v-b-tooltip.hover.right
+            class="icon-help"
+            font-scale="2"
+            icon="question-circle"
+            :title="$options.nrData.periodsHelperText"></b-icon>
         </b-col>
         <b-col cols="3" ref="calendarColumn">
           <app-calendar
@@ -77,7 +87,8 @@ export default {
   nrData: {
     periodsCount: 3,
     periods: null,
-    todayDate: generateDateString(new Date())
+    todayDate: generateDateString(new Date()),
+    periodsHelperText: 'There are two different periods in which upcoming fixtures can be displayed: Friday to Monday & Tuesday to Thursday'
   },
   methods: {
     handleCalendarInputEvent (inputValue) {
@@ -120,10 +131,8 @@ export default {
           this.handleDataError('No games found for this date.')
         }
       } catch (err) {
-        await globalErrorHandler(
-          err,
-          { callback: this.handleDataError, argument: 'Sorry, we could not load the data. Try again later.' },
-          this.getFixturesData
+        globalErrorHandler(
+          { callback: this.handleDataError, argument: 'Sorry, we could not load the data. Try again later.' }
         )
       }
     },
@@ -145,8 +154,7 @@ export default {
   async created () {
     const nrDataObject = this.$options.nrData
     nrDataObject.periods = generatePeriods(nrDataObject.periodsCount)
-    // await this.getFixturesData()
-    this.getFixturesMockData()
+    await this.getFixturesData()
   },
   mounted () {
     this.calendarColumnRef = this.$refs.calendarColumn
@@ -175,5 +183,11 @@ export default {
 .fixtures-output {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+.icon-help {
+  color: #acb3b9;
+  margin-top: 0.5rem;
+  cursor: pointer;
 }
 </style>
